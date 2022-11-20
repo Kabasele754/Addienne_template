@@ -1,0 +1,62 @@
+<Login>:
+    # bander the text input and protertyObject 
+    text_input_email: email
+    text_input_password: psw
+    MDFloatLayout:
+        md_bg_color:1, 1, 1, 1
+    # button the return to page welcome
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {'center_x': 0.4,'center_y': 0.8}
+        on_release:
+            root.manager.transition.direction = "right" 
+            root.manager.current = "welcome"
+    # Image logo
+    Image:
+        source: "assets/images/5BSS.png"
+        pos_hint: {"center_x":0.5, "center_y":0.75}
+        #size_hint_y: .5
+    # text input for the email
+    MDTextField:
+        id: email
+        #mode: "round"
+        mode: "rectangle"
+        hint_text:"Email"
+        pos_hint: {"center_x":0.5, "center_y":0.55}
+        #size_hint: .75,0.05
+        #foreground_color:1,1,1,1
+        #line_color_focus: 1, 1, 1, 1
+        size_hint_x: None
+        width: "300dp"
+        icon_left: "account_check"
+        color: 1, 1, 1, 1
+    # Text input for the password    
+    MDTextField:
+        id: psw
+        #mode: "round"
+        mode: "rectangle"
+        size_hint_x: None
+        width: "300dp"
+        hint_text: "Password"
+        pos_hint: {"center_x":0.5, "center_y":0.40}
+        password: True
+        icon_left: "key-variant"
+    # button for the passward to eye on and eye off 
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {"center_y": .4}
+        pos: psw.width - self.width + dp(8), 0
+        theme_text_color: "Hint"
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            psw.password = False if psw.password is True else True
+
+    # button the login
+    MDFillRoundFlatButton:
+        text: "CONNEXION"
+        font_name: 'BPoppins'
+        size_hint: .5, .065
+        pos_hint: {"center_x":0.5, "center_y":0.25}
+        on_release: 
+            root.sign_in()
+            

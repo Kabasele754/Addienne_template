@@ -46,14 +46,23 @@ MDScreen:
         orientation: 'vertical'
 
 <AddMessage>:
-    text_input: input
-    TextInput:
-        hint_text: "Name"
-        id: input
-        pos: root.center_x - 220, 300
-        size: 400,50
+    text_input_email: email
+    text_input_password: password
+    GridLayout:
+        cols: 2 
+        rows: 2
+        TextInput:
+            hint_text: "Name"
+            id: email
+            pos: root.center_x - 220, 300
+            size: 400,50
+        TextInput:
+            hint_text: "Password"
+            id: password
+            pos: root.center_x - 10, 300
+            size: 400,50
     Button:
         size: 130,40
         pos: root.center_x - 100, 200
-        text: 'Submit'
+        text: 'Connexion'
         on_release: root.submit_input()

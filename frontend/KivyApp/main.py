@@ -31,12 +31,16 @@ class MyRecycleView(RecycleView):
 
 
 class AddMessage(Widget):
-    text_input = ObjectProperty(None)
-    input = StringProperty('')
+    text_input_email = ObjectProperty(None)
+    text_input_password = ObjectProperty(None)
+    email = StringProperty('')
+    password = StringProperty('')
 
     def submit_input(self):
-        self.input = self.text_input.text
-        post = requests.post('http://127.0.0.1:8000/create', json={'name': self.input})
+        self.email = self.text_input_email.text
+        self.password = self.text_input_password.text
+        post = requests.post('http://127.0.0.1:8000/auth/login/',json={'email': self.email,'password': self.password})
+        print("voir ",post)
 
         self.input = ''
 

@@ -1,0 +1,37 @@
+<Welcome>:
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+    Image:
+        source: "assets/images/5BSS.png"
+        size_hint: .9,.9
+        pos_hint: {'center_x': 0.5,'center_y': 0.70}
+
+    MDLabel:
+        text: "H a l l o !"
+        halign: "center"
+        font_size: "25sp"
+        font_name: 'BPoppins'
+        pos_hint: {'center_y': 0.50}
+    MDLabel:
+        text: 'I am your choice to help you in your bussines !'
+        halign: "center"
+        font_name: 'MPoppins'
+        font_size: "15sp"
+        size_hint_x: .5
+        pos_hint: {'center_x': 0.5,'center_y': 0.40}
+        color: rgba(127, 127, 127, 255)
+    MDFillRoundFlatButton:
+        text: "LOGIN"
+        font_name: 'BPoppins'
+        size_hint: .5, .065
+        pos_hint: {'center_x': 0.5,'center_y': 0.28}
+        on_release:
+            root.manager.transition.direction = "left" 
+            root.manager.current = "login"
+
+    MDRoundFlatButton:
+        text: "SIGNUP"
+        font_name: 'BPoppins'
+        size_hint: .5, .065
+        pos_hint: {'center_x': 0.5,'center_y': 0.18}
+    

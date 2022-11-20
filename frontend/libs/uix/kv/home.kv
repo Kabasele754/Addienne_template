@@ -1,0 +1,86 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+<Home>:
+
+    MDNavigationLayout:
+
+        MDScreenManager:
+
+            MDScreen:
+
+                MDTopAppBar:
+                    title: "Report offic"
+                    elevation: 4
+                    pos_hint: {"top": 1}
+                    md_bg_color: "#e7e4c0"
+                    specific_text_color: "#4a4939"
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    right_action_items: [['account-circle', lambda x: print("je suis acount")  ], ['dots-vertical', lambda x: print("je suis notification")]]
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+
+            MDNavigationDrawerMenu:
+
+                MDNavigationDrawerHeader:
+                    title: "Dashboard"
+                    icon: "home"
+                    title_color: "#4a4939"
+                    text: "Menu"
+                    spacing: "4dp"
+                    padding: "12dp", 0, 0, "56dp"
+
+                MDNavigationDrawerLabel:
+                    text: "My actions"
+
+                DrawerClickableItem:
+                    icon: "calandar"
+                    right_text: "+99"
+                    text_right_color: "#4a4939"
+                    text: "View schedule"
+
+                DrawerClickableItem:
+                    icon: "select"
+                    text: "Select work site"
+                DrawerClickableItem:
+                    icon: "personal"
+                    text: "Policy Manual"
+                DrawerClickableItem:
+                    icon: "vacation"
+                    text: "Vacation Request"
+                DrawerClickableItem:
+                    icon: "v"
+                    text: "Vacation Review"
+
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Parameter"
+
+                DrawerLabelItem:
+                    icon: "information-outline"
+                    text: "Help"
+
+                DrawerClickableItem:
+                    icon: "logout"
+                    text: "LOGOUT"
+                    on_release:
+                        root.logout()
+                        
+
+
