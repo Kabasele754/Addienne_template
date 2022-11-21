@@ -6,4 +6,4 @@ class BlogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = ['id','title', 'image', 'description', 'published', 'category']
+        fields = ['id','title','description', 'published', 'category']

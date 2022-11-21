@@ -17,6 +17,14 @@ class Blog(models.Model):
         ('publised', 'PUBLISHED'),
         ('draft', 'DRAFT')
     )
+    
+    CATEGORY = [
+        ('INFORMATION', 'INFORMATION'),
+        ('LIFE', 'LIFE'),
+        ('VOYAGE', 'VOYAGE'),
+        ('CULTURE', 'CULTURE'),
+        ('OTHERS', 'OTHERS')
+    ]
 
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/')
@@ -27,7 +35,8 @@ class Blog(models.Model):
     updated = models.DateTimeField(auto_now=True)
     type_article_slid = models.BooleanField(default=False)
     status = models.CharField(choices=choice_etat, max_length=50)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.CharField(choices=CATEGORY, max_length=255)
+    #category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # user tag pip install django-taggit
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
