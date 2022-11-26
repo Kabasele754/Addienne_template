@@ -21,7 +21,7 @@ class MyRecycleView(RecycleView):
         Clock.schedule_interval(self.load_data, 1)
 
     def load_data(self, *args):
-        store = requests.get('http://127.0.0.1:8000/').json()
+        store = requests.get('http://127.0.0.1:8000/api').json()
 
         list_data = []
         for item in store:
