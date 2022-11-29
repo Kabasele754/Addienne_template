@@ -35,7 +35,7 @@ MDScreen:
         MyRecycleView:
 
 <MyRecycleView>:
-    viewclass: 'MDLabel'
+    viewclass: 'PlaylistItem'
     RecycleBoxLayout:
         color: 1,1,1,1
         default_size: None, dp(56)
@@ -44,6 +44,84 @@ MDScreen:
         height: self.minimum_height
         hlign: "center"
         orientation: 'vertical'
+
+<PlaylistItem@BoxLayout>:
+    id: card_id
+    created_time: ''
+    description: ''
+    id: ''
+    image_url: ''
+    name: ''
+    owner: ''
+    updated_time: ''
+    playlist_name: ''
+    #text_title: title
+
+    MDCard:
+        AsyncImage:
+            size_hint_x: .2
+            size: self.texture_size
+            
+            source:"assets/images/5BSS.png" #root.image_url
+            #title: root.title
+            mipmap: True
+
+        BoxLayout:
+            orientation:'vertical'
+
+            MDLabel:
+                text: root.playlist_name
+                theme_text_color: 'Secondary'
+                #font_style:'title'     
+            MDSeparator:
+                height: dp(1)
+            MDLabel:
+                text: 'body'
+                theme_text_color: 'Primary'
+
+<MovieItem@BoxLayout>
+    MDCard:
+        size_hint: 1, None
+        elevation: 0
+
+        BoxLayout:
+            orientation: "vertical"
+
+        AsyncImage:
+            id: movie_imagesource: 
+            size_hint: None, None
+            #"https://resizing.flixster.com/brx5oftqBiMwdb4cbnpTEcJke3Y=/fit-in/200x296.2962962962963/v1.bTsxMTE3NjgxNTtqOzE4ODA0OzEyMDA7ODAwOzEyMDA"
+
+        MDLabel:
+            id: title
+            text: "American Hustle"
+            markup: True
+            font_size: '12pt'
+            bold: True
+            adaptive_height: True
+
+        MDLabel:
+            id: synopsis
+            text: " and the Mafia."
+            markup: True
+            font_size: '9pt'
+            adaptive_height: True
+
+        MDLabel:
+            id: rt_rating
+            text: "92%"
+            markup: True
+            font_size: '14pt'
+            adaptive_height: True
+
+        MDLabel:
+            id: genre
+            text: "Crime, Drama"
+            font_size: '11pt'
+            adaptive_height: True
+
+        MDSeparator:
+            height: dp(1)
 
 <AddMessage>:
     text_input_email: email
