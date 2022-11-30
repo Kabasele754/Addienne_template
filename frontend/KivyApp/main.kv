@@ -43,8 +43,6 @@ MDScreen:
             font_style: "H4"
             adaptive_height: True
             padding_x: "24dp"
-
-            
             
         MyRecycleView:
 
@@ -89,58 +87,11 @@ MDScreen:
         spacing: dp(20)
         padding: dp(20)
 
-<HeroCard>
-    orientation: "vertical"
-    size_hint: 1, None
-    height: "340dp"
-    elevation: 8
-    radius: 24
-    padding: 12
-    description: self.description
-    image_url: self.image
-    updated_time: ''
-    playlist_name: self.playlist_name
-
-    MDHeroFrom:
-        id: hero_from
-        tag: root.tag
-        size_hint: 1, None
-        height: root.height / 1.8
-
-        FitImage:
-            source: root.image_url
-            size_hint: None, None
-            pos_hint: {'center_x': 0.5,'center_y': 0.50}
-            size: hero_from.size
-            radius: 24
-
-    MDLabel:
-        text: root.playlist_name
-        bold: True
-        pos_hint: {'center_x': 0.5,'center_y': 0.30}
-        adaptive_height: True
-        padding: 12, 12
-        font_style: "H5"
-
-    MDLabel:
-        padding: 12, 12
-        pos_hint: {'center_x': 0.5,'center_y': 0.20}
-        text: root.description
-
-
-
 
 <BlogListItem>:
-    id: card_id
-    created_time: ''
     description: self.description
-    id: ''
     image_url: self.image
-    name: ''
-    owner: ''
-    updated_time: ''
     title: self.title
-    #text_title: title
 
     MDCard:
         #size_hint:(.6, .3)
@@ -175,52 +126,7 @@ MDScreen:
                 text: root.description
                 #pos_hint: {'center_x': 0.5,'center_y': 0.60}
                 theme_text_color: 'Primary'
-           
-            
 
-<MovieItem@BoxLayout>
-    MDCard:
-        size_hint: 1, None
-        elevation: 0
-
-        BoxLayout:
-            orientation: "vertical"
-
-        AsyncImage:
-            id: movie_imagesource: 
-            size_hint: None, None
-            #"https://resizing.flixster.com/brx5oftqBiMwdb4cbnpTEcJke3Y=/fit-in/200x296.2962962962963/v1.bTsxMTE3NjgxNTtqOzE4ODA0OzEyMDA7ODAwOzEyMDA"
-
-        MDLabel:
-            id: title
-            text: "American Hustle"
-            markup: True
-            font_size: '12pt'
-            bold: True
-            adaptive_height: True
-
-        MDLabel:
-            id: synopsis
-            text: " and the Mafia."
-            markup: True
-            font_size: '9pt'
-            adaptive_height: True
-
-        MDLabel:
-            id: rt_rating
-            text: "92%"
-            markup: True
-            font_size: '14pt'
-            adaptive_height: True
-
-        MDLabel:
-            id: genre
-            text: "Crime, Drama"
-            font_size: '11pt'
-            adaptive_height: True
-
-        MDSeparator:
-            height: dp(1)
 
 <AddMessage>:
     text_input_email: email

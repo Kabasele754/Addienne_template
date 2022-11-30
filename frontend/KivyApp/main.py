@@ -1,6 +1,7 @@
 import os
 os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
+from kivymd.app import MDApp
 import requests
 from kivy.clock import Clock
 from kivy.uix.recycleview import RecycleView
@@ -11,10 +12,7 @@ from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivymd.app import MDApp
 from kivymd.uix.list import OneLineIconListItem
-from kivymd.uix.behaviors import FakeRectangularElevationBehavior
-from kivymd.uix.card import MDCard
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.screen import MDScreen
 
@@ -24,7 +22,7 @@ Window.size = (375,625)
 
 #recycle view for home screen
 
-class DonneEtudianList(OneLineIconListItem):
+class BlogList(OneLineIconListItem):
     pass
 
 class BlogListItem(BoxLayout):
@@ -32,17 +30,6 @@ class BlogListItem(BoxLayout):
     image = StringProperty("Image")
     description = StringProperty("Description")
 
-
-class ElevationCard(FakeRectangularElevationBehavior, MDCard):
-    pass
-
-
-class HeroCard(ElevationCard):
-    source = StringProperty()
-    tag = StringProperty()
-    playlist_name = StringProperty("Titre")
-    image = StringProperty("Image")
-    description = StringProperty("Description")
 
 class MyRecycleView(RecycleView):
     text_title = ObjectProperty(None)
@@ -67,9 +54,9 @@ class MyRecycleView(RecycleView):
             if item:
                 self.data.list_data.append(
                         {
-                            'viewclass':"BlogListItem",# "BlogListItem",#"HeroCard"
+                            'viewclass':"BlogListItem",
                             'markup': True,
-                            'title':f" {item['title']}", #  {item['category']}
+                            'title':f" {item['title']}",
                             'description':item['description'],
                             'image': f"http://127.0.0.1:8000{item['image']}"
                         }
