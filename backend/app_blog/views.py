@@ -12,6 +12,13 @@ from rest_framework import permissions
 from .permissions import IsOwner
 
 
+@api_view(['GET'])
+def all_blog(request):
+    tasks = Blog.objects.all()
+    serializer = BlogSerializer(tasks, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class BlogListAPIView(ListCreateAPIView):
     serializer_class = BlogSerializer
     queryset = Blog.objects.all()

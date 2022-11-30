@@ -9,9 +9,16 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.widget import Widget
+from kivy.core.window import Window
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.list import OneLineIconListItem
+from kivymd.uix.behaviors import FakeRectangularElevationBehavior
+from kivymd.uix.card import MDCard
+from kivymd.theming import ThemableBehavior
+from kivymd.uix.screen import MDScreen
+
+Window.size = (375,625)
 
 
 
@@ -20,8 +27,26 @@ from kivymd.uix.list import OneLineIconListItem
 class DonneEtudianList(OneLineIconListItem):
     pass
 
+class BlogListItem(BoxLayout):
+    playlist_name = StringProperty("Titre")
+    image = StringProperty("Image")
+    description = StringProperty("Description")
+
+
+class ElevationCard(FakeRectangularElevationBehavior, MDCard):
+    pass
+
+
+class HeroCard(ElevationCard):
+    source = StringProperty()
+    tag = StringProperty()
+    playlist_name = StringProperty("Titre")
+    image = StringProperty("Image")
+    description = StringProperty("Description")
+
 class MyRecycleView(RecycleView):
     text_title = ObjectProperty(None)
+    playlist_name = StringProperty("Titre")
     
     def __init__(self, **kwargs):
         super(MyRecycleView, self).__init__(**kwargs)
@@ -31,16 +56,29 @@ class MyRecycleView(RecycleView):
 
     def load_data(self, *args):
         #card_id = root.ids.card_id
-        store = requests.get('http://127.0.0.1:8000/api').json()
+        #store = requests.get('http://127.0.0.1:8000/api').json()
+        store = requests.get('http://127.0.0.1:8000/blog').json()
 
-        list_data = []
+        self.data.list_data = []
         for item in store:
-            list_data.append({'text': item['name']})
+            #self.data.list_data.append({'text': item['name']})
+            print(f"http://127.0.0.1:8000/{item['image']}")
+            
+            self.data.list_data.append(
+                    {
+                        'viewclass':"BlogListItem",# "BlogListItem",#"HeroCard"
+                        'markup': True,
+                        'playlist_name':f" {item['title']}", #  {item['category']}
+                        'description':item['description'],
+                        'image': f"http://127.0.0.1:8000{item['image']}"
+                    }
+                    )
 
-        self.data = list_data
-        self.text_title = self.data
-
-
+        self.data = self.data.list_data
+        #self.text_title = self.data
+        #self.viewclass= str(self.data)
+        #self.playlist_name = 
+           
 class AddMessage(Widget):
     text_input_email = ObjectProperty(None)
     text_input_password = ObjectProperty(None)
@@ -57,7 +95,10 @@ class AddMessage(Widget):
 
 
 
-class HomeScreen(Screen):
+class HomeScreen(ThemableBehavior, MDScreen):
+    pass
+
+class MainScreenView(ThemableBehavior, MDScreen):
     pass
 
 

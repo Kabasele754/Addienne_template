@@ -44,7 +44,7 @@ class Blog(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['title', 'published', 'status', 'image']
+        ordering = ['published',]
 
 # Model Comments for Article and Blog
 class Comment(models.Model):
