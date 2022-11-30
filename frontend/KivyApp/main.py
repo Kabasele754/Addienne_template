@@ -90,9 +90,6 @@ class AddMessage(Widget):
 class HomeScreen(ThemableBehavior, MDScreen):
     pass
 
-class MainScreenView(ThemableBehavior, MDScreen):
-    pass
-
 
 class Test(MDApp):
 
