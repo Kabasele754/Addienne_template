@@ -28,7 +28,7 @@ class DonneEtudianList(OneLineIconListItem):
     pass
 
 class BlogListItem(BoxLayout):
-    playlist_name = StringProperty("Titre")
+    title = StringProperty("Titre")
     image = StringProperty("Image")
     description = StringProperty("Description")
 
@@ -64,15 +64,20 @@ class MyRecycleView(RecycleView):
             #self.data.list_data.append({'text': item['name']})
             print(f"http://127.0.0.1:8000/{item['image']}")
             
-            self.data.list_data.append(
-                    {
-                        'viewclass':"BlogListItem",# "BlogListItem",#"HeroCard"
-                        'markup': True,
-                        'playlist_name':f" {item['title']}", #  {item['category']}
-                        'description':item['description'],
-                        'image': f"http://127.0.0.1:8000{item['image']}"
-                    }
-                    )
+            if item:
+                self.data.list_data.append(
+                        {
+                            'viewclass':"BlogListItem",# "BlogListItem",#"HeroCard"
+                            'markup': True,
+                            'title':f" {item['title']}", #  {item['category']}
+                            'description':item['description'],
+                            'image': f"http://127.0.0.1:8000{item['image']}"
+                        }
+                        )
+                print("Good")
+                
+            else:
+                print("Aucune donnee")
 
         self.data = self.data.list_data
         #self.text_title = self.data

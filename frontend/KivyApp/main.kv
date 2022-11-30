@@ -139,7 +139,7 @@ MDScreen:
     name: ''
     owner: ''
     updated_time: ''
-    playlist_name: self.playlist_name
+    title: self.title
     #text_title: title
 
     MDCard:
@@ -151,7 +151,7 @@ MDScreen:
             size_hint_x: .2
             #size: self.texture_size   AsyncImage
             source:root.image_url #"assets/images/5BSS.png" 
-            radius: 24
+            radius: 20
             #title: root.title
             mipmap: True
 
@@ -161,7 +161,7 @@ MDScreen:
             padding: dp(5)
 
             MDLabel:
-                text: root.playlist_name
+                text: root.title
                 color: 1, 0, 0, 1
                 #theme_text_color: 'Secondary'
                 #font_style:'title'
