@@ -29,11 +29,10 @@ class BlogListItem(BoxLayout):
     title = StringProperty("Titre")
     image = StringProperty("Image")
     description = StringProperty("Description")
+    category = StringProperty("Category")
 
 
 class MyRecycleView(RecycleView):
-    text_title = ObjectProperty(None)
-    playlist_name = StringProperty("Titre")
     
     def __init__(self, **kwargs):
         super(MyRecycleView, self).__init__(**kwargs)
@@ -49,7 +48,7 @@ class MyRecycleView(RecycleView):
         self.data.list_data = []
         for item in store:
             #self.data.list_data.append({'text': item['name']})
-            print(f"http://127.0.0.1:8000/{item['image']}")
+            print(f"{item}")
             
             if item:
                 self.data.list_data.append(
@@ -57,6 +56,7 @@ class MyRecycleView(RecycleView):
                             'viewclass':"BlogListItem",
                             'markup': True,
                             'title':f" {item['title']}",
+                            'category':f"{item['category']}  {item['published']}",
                             'description':item['description'],
                             'image': f"http://127.0.0.1:8000{item['image']}"
                         }
