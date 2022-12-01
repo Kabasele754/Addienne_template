@@ -19,9 +19,6 @@ from kivymd.uix.screen import MDScreen
 Window.size = (375,625)
 
 
-
-#recycle view for home screen
-
 class BlogList(OneLineIconListItem):
     pass
 
